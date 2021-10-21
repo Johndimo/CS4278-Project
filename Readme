@@ -1,7 +1,8 @@
-This is the repo for our project for CS4278. We will create a clustering algorithm desktop application to help 
-Dr. Padovani-Claudio visualize patient data and common patterns.
+This is the repo for our project for CS4278. We will create a clustering algorithm desktop application to help Dr. Padovani-Claudio visualize patient data and common patterns.
+
 This includes a file upload system, with instructions for specifying the necessary format of the file, 
 that will run the t-SNE algorithm with default settings once the file is validated. 
+
 The interactive plot display screen allows for the user to adjust weights to specific attributes to see 
 how it affects the clustering/associations between the data, as well as options to highlight 1-5 attributes on the display.
 
