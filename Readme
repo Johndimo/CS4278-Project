@@ -1,3 +1,3 @@
-This is the repo for our project for CS4278. We will create a clustering algorithm desktop application to help Dr. Claudio-Padovani visualize patient data and common patterns.
+This is the repo for our project for CS4278. We will create a clustering algorithm desktop application to help Dr. Padovani-Claudio visualize patient data and common patterns.
 
 We are going to use Python for the development of the t-sne algorithm and the desktop app.
