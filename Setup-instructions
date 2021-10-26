@@ -1,0 +1,5 @@
+Run the following commands in the anaconda terminal:
+conda install -c bioconda bioinfokit
+conda install -c conda-forge adjusttext
+conda install -c conda-forge matplotlib-venn
+conda install -c plotly plotly
