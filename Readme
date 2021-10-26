@@ -4,6 +4,6 @@ This includes a file upload system, with instructions for specifying the necessa
 that will run the t-SNE algorithm with default settings once the file is validated. 
 
 The interactive plot display screen allows for the user to adjust weights to specific attributes to see 
-how it affects the clustering/associations between the data, as well as options to highlight 1-5 attributes on the display.
+how it affects the clustering/associations between the data, as well as options to highlight 2 attributes on the display. One attribute is distinguished by color, one by shape
 
 We are going to use Python for the development of the t-SNE algorithm and the desktop app.
