@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[22]:
+# In[5]:
 
 
 import pandas as pd
@@ -22,6 +22,7 @@ class TsnePlot:
     colorCol = ""
     df = []
     ID = []
+    sheets = []
     
     #Constructor with given file path
     def __init__(self, newPath):
@@ -29,16 +30,30 @@ class TsnePlot:
         self.path = newPath
         app = xw.App(visible = False)
         book = xw.Book(self.path)
-        sheet = book.sheets('Master corrected variables')
+        for sheet in book.sheets:
+            self.sheets.append(sheet.name)
+        book.close()
+        app.quit()
+        
+    def setSheet(self, sheetName):
+        self.sheet = sheetName
+        #Open file and extract contents
+        app = xw.App(visible = False)
+        book = xw.Book(self.path)
+        
+        sheet = book.sheets(sheetName)
         self.df = sheet.range('A1').options(pd.DataFrame, expand='table').value
         book.close()
         app.quit()
         
         #Get first column as identifiers and fill N/A values
-        self.ID = self.df.index.values
+        
         self.df = self.df.fillna('')
         self.df = self.df.loc[:,~self.df.columns.duplicated()]
-        
+        self.ID = self.df.index.values
+    
+    def getSheets(self):
+        return self.sheets
     
     #Set output plot columns
     def setOutputColumns(self, sCol, cCol):
@@ -129,22 +144,3 @@ class TsnePlot:
         fig = self.getFigure(df_results)
 
         return fig
-
-
-# In[23]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
