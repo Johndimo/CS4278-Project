@@ -68,7 +68,7 @@ class TsnePlot:
                 sheet = book.sheets(sheetName)
                 self.df = sheet.range('A1').options(pd.DataFrame, expand='table').value
                 book.close()
-                app.quit()
+                app.kill()
 
 
                 self.df = self.df.fillna('')
