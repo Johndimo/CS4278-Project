@@ -94,10 +94,13 @@ class TsnePlot:
         """
         
         columns = self.getColumns()
-        if sCol in columns and cCol in columns:
-            self.shapeCol = sCol
-            self.colorCol = cCol
-        else:
+        try:
+            if sCol in columns and cCol in columns:
+                self.shapeCol = sCol
+                self.colorCol = cCol
+            else:
+                raise()
+        except Exception:
             print("Invalid output columns")
     
     def getColumns(self):
