@@ -185,7 +185,8 @@ class TsnePlot:
         else:
             print('Data has not been set, cannot run getDicts()')
             return None
-    
+        
+            
     def generateResults(self, df2):
         """Runs the TSNE algorithm and stores results in df_results as long as the algorithm has not been run yet
 
@@ -218,34 +219,37 @@ class TsnePlot:
 
         :returns: the figure if data has been set, 'None' if not
         """
-        
-        if len(self.df_results) > 0:
-            if len(self.shapeCol) == 0:
-                self.shapeCol = self.getColumns[0]
-            if len(self.colorCol) == 0:
-                self.colorCol = self.getColumns[0]
-            
-            
-            symbolOut = self.shapeCol
-            colorOut = self.colorCol
-            if isinstance(self.df_results[self.shapeCol][0],datetime.datetime):
-                name = self.shapeCol + " as Number"
-                self.df_results[name] = self.df_results[self.shapeCol].map(pd.Series(data=np.arange(len(self.df_results)), index=self.df_results[self.shapeCol].values).to_dict())
-                symbolOut = name
-            if isinstance(self.df_results[self.colorCol][0],datetime.datetime):
-                name = self.colorCol + " as Number"
-                self.df_results[name] = self.df_results[self.colorCol].map(pd.Series(data=np.arange(len(self.df_results)), index=self.df_results[self.colorCol].values).to_dict())
-                colorOut = name
-            fig = px.scatter(self.df_results, x="x", y="y", color=colorOut, symbol=symbolOut, hover_data=["ID"])
-            fig.update_traces(marker={'size': 7, 'line' : {'color' : 'rgba(0, 0, 0, 0.5)',
-                                               'width' : 1}})
+        try:
+            if len(self.df_results) > 0:
+                if len(self.shapeCol) == 0:
+                    self.shapeCol = self.getColumns[0]
+                if len(self.colorCol) == 0:
+                    self.colorCol = self.getColumns[0]
 
-            fig.layout.legend.y = 1.05
-            fig.layout.legend.x = 1.035
-            fig.layout.coloraxis.colorbar.y = 0.35
-            return fig
-        else:
-            print('You have not run the algorithm yet.')
+
+                symbolOut = self.shapeCol
+                colorOut = self.colorCol
+                if isinstance(self.df_results[self.shapeCol][0],datetime.datetime):
+                    name = self.shapeCol + " as Number"
+                    self.df_results[name] = self.df_results[self.shapeCol].map(pd.Series(data=np.arange(len(self.df_results)), index=self.df_results[self.shapeCol].values).to_dict())
+                    symbolOut = name
+                if isinstance(self.df_results[self.colorCol][0],datetime.datetime):
+                    name = self.colorCol + " as Number"
+                    self.df_results[name] = self.df_results[self.colorCol].map(pd.Series(data=np.arange(len(self.df_results)), index=self.df_results[self.colorCol].values).to_dict())
+                    colorOut = name
+
+                fig = px.scatter(self.df_results, x="x", y="y", color=colorOut, symbol=symbolOut, hover_data=["ID"])
+                fig.update_traces(marker={'size': 7, 'line' : {'color' : 'rgba(0, 0, 0, 0.5)',
+                                                   'width' : 1}})
+
+                fig.layout.legend.y = 1.05
+                fig.layout.legend.x = 1.035
+                fig.layout.coloraxis.colorbar.y = 0.35
+                return fig
+            else:
+                print('You have not run the algorithm yet.')
+                return None
+        except:
             return None
 
     def getPlot(self):
