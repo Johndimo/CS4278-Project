@@ -3,3 +3,9 @@ conda install -c bioconda bioinfokit
 conda install -c conda-forge adjusttext
 conda install -c conda-forge matplotlib-venn
 conda install -c plotly plotly
+
+
+For developer use: deployment:
+pyinstallar --onefile --windowed --icon=app-icon.ico .\UI.ipynb
+
+then be sure to copy the dependent files into the created dist folder
