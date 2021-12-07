@@ -3,9 +3,19 @@ conda install -c bioconda bioinfokit
 conda install -c conda-forge adjusttext
 conda install -c conda-forge matplotlib-venn
 conda install -c plotly plotly
+conda install -c PyQt5
+conda install -c xlwings
 
 
 For developer use: deployment:
-pyinstallar --onefile --windowed --icon=app-icon.ico .\UI.ipynb
+pyinstaller --name=tSNEClusteringAlgorithm --icon=app-icon.ico .\UI.py
+pyinstaller UI.spec UI.py
 
-then be sure to copy the dependent files into the created dist folder
+Then be sure to copy the dependent files (TSNE_Algorithm folder, app-icon.ico, loader-symbol.gif,
+recentFiles.txt) into the created dist folder
+
+to run: 
+  cd dist
+  cd UI
+  and in the terminal:
+    UI.exe
